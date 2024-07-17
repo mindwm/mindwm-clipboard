@@ -2,7 +2,7 @@ specVersion: 0.36.0
 name: clipboard-context
 runtime: python
 registry: ghcr.io/mindwm
-namespace: default
+namespace: context-team-a
 created: 2024-07-14T13:01:39.841440006Z
 invoke: cloudevent
 build:
@@ -11,5 +11,5 @@ build:
   - name: BP_CPYTHON_VERSION
     value: 3.12.*
 deploy:
-  namespace: default
-  image: ghcr.io/mindwm/clipboard-context@sha256:d193acd8a787f2711e3ef7f01fbe5a7be8c6ab592cbd4622a442842d7552059f
+  namespace: context-team-a
+  image: ghcr.io/mindwm/clipboard-context@sha256:6202eeb24fb0ddc58b9040c3d0182273656388bf516988f4b79d710df5842e7c
