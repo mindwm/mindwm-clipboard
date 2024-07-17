@@ -1,0 +1,15 @@
+---
+apiVersion: eventing.knative.dev/v1
+kind: Trigger
+metadata:
+  name: clipboard-events
+spec:
+  broker: context-broker-team-a
+  filters:
+    - exact:
+        type: Clipboard
+  subscriber:
+    ref:
+      apiVersion: serving.knative.dev/v1
+      kind: Service
+      name: clipboard-context
