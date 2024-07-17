@@ -1,7 +1,5 @@
-import sys
 import os
 import sys
-import os
 import re
 sys.path.append(os.path.abspath('mindwm-api/neomodel'))
 sys.path.append(os.path.abspath('mindwm-api/generated/openapi/python/'))
@@ -25,5 +23,15 @@ def main(context: Context):
     clipboard = MindWM.Clipboard.from_json(conversion.to_json(event))
     pprint.pprint(event, stream=sys.stderr)
     print(clipboard.to_str(), file=sys.stderr)
+
+    
+    _, username, hostname, _ = clipboard.source.split(".")
+
+    mindwmUser = neomodel_data.MindwmUser.nodes.get(username = username)
+    mindwmHost = mindwmUser.host.get(hostname = hostname)
+
+    clipboardNode = neomodel_data.ClipBoard(data = clipboard.data.data, uuid = clipboard.id).save()
+    clipboardNode.host.connect(mindwmHost)
+
 
     return context.cloud_event.data

@@ -10,6 +10,14 @@ build:
   buildEnvs:
   - name: BP_CPYTHON_VERSION
     value: 3.12.*
+run:
+  envs:
+  - name: NEO4J_URL
+    value: team-a-neo4j-neo4j.context-team-a:7687
+  - name: NEO4J_USERNAME
+    value: neo4j
+  - name: NEO4J_PASSWORD
+    value: password
 deploy:
   namespace: context-team-a
-  image: ghcr.io/mindwm/clipboard-context@sha256:6202eeb24fb0ddc58b9040c3d0182273656388bf516988f4b79d710df5842e7c
+  image: ghcr.io/mindwm/clipboard-context@sha256:d487c4ea4684ce6600ad6f225845ab54c6e38e7a576370a6ea4c46aec048422c
